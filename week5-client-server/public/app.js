@@ -1,6 +1,12 @@
 // public/app.js
 // Task Board - Frontend Logic (Custom CSS Version)
 
+const API_BASE = API_CONFIG.BASE_URL;
+const API = {
+    TASKS: `${API_BASE}${API_CONFIG.ENDPOINTS.TASKS}`,
+    STATS: `${API_BASE}${API_CONFIG.ENDPOINTS.STATS}`
+};
+
 // ========================================
 // PART 1: STATE MANAGEMENT
 // ========================================
@@ -35,15 +41,13 @@ const doneCount = document.getElementById('doneCount');
 async function fetchTasks() {
     showLoading();
     try {
-        const response = await fetch('/api/tasks');
-        if (!response.ok) throw new Error('Failed to fetch');
-        
-        const data = await response.json();
-        allTasks = data.tasks; 
-        renderTasks(); 
+        const res = await fetch(API.TASKS);
+        if (!res.ok) throw new Error('โหลด tasks ล้มเหลว');
+        const { data } = await res.json();
+        renderTasks(data);
     } catch (error) {
-        console.error('Error fetching tasks:', error);
-        alert('Failed to load tasks. Please check your connection.');
+        console.error('Error loading tasks:', error);
+        showError('โหลด tasks จาก server ล้มเหลว');
     } finally {
         hideLoading();
     }

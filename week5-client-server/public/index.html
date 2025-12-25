@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Board - Monolithic Architecture</title>
+    <title>Task Board - Client-Server</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📋 Task Board</h1>
-            <p class="subtitle">Monolithic Architecture Demo - Week 3</p>
-        </header>
+    <header>
+        <h1>📋 Task Board - Client-Server Architecture</h1>
+        <div id="serverStatus" class="status-bar">
+            <span id="statusIndicator">🔴</span>
+            <span id="statusText">กำลังเชื่อมต่อ server...</span>
+        </div>
+    </header>
 
         <section class="add-task-section">
             <h2>➕ Add New Task</h2>
@@ -90,6 +90,7 @@
         <p>Loading...</p>
     </div>
 
+    <script src="config.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
