@@ -1,6 +1,7 @@
 // public/app.js
 // Task Board - Frontend Logic (Custom CSS Version)
 
+const API_BASE_URL = 'http://192.168.1.11:3000';
 // ========================================
 // PART 1: STATE MANAGEMENT
 // ========================================
