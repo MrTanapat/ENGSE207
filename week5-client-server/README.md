@@ -16,27 +16,24 @@ Browser → Node.js (all layers) → Database
 ```
 ### Week 5: Client-Server (Two Machines)
 ```
-Local Browser    → Network → VM (Node.js) → Database
-(192.168.1.11:3000)             (192.168.56.101:8000)
+Local Browser    →   Network   →   Ubuntu VM (Node.js API)   →   Database
+(localhost:8080)                   (192.168.1.11:3000)
 ```
 ## Project Structure
 ```
 Local Machine:
 └── public/
-    ├── index.html    # Frontend UI
-    ├── style.css     # Styles
-    ├── app.js        # Client logic
-    └── config.js     # API configuration
+    ├── index.html    # โครงสร้างหน้าเว็บ
+    ├── style.css     # การตกแต่ง
+    ├── app.js        # Logic การดึงข้อมูล API (Fetch)
+    └── config.js     # ไฟล์ตั้งค่า IP ของ API Server
 
-Virtual Machine:
+Virtual Machine (Server-side):
 └── task-board-api/
-    ├── server.js           # Entry point
-    ├── ecosystem.config.js # PM2 config
-    ├── src/
-    │   ├── controllers/
-    │   ├── services/
-    │   └── repositories/
-    └── database/
+    ├── week4-layerd/
+    │   ├── server.js # API Entry Point (ติดตั้ง CORS แล้ว)
+    │   └── src/      # controllers, services, repositories
+    └── database/     # tasks.db (SQLite)
 ```
 
 ## Setup Instructions
@@ -94,7 +91,7 @@ Base URL: `http://VM_IP:3000`
 
 ### Example Request
 ```javascript
-fetch('http://192.168.56.101:3000/api/tasks', {
+fetch('http://192.168.1.11:3000/api/tasks', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
