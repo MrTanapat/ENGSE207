@@ -11,11 +11,11 @@
 ### 1. Service Design (20 คะแนน)
 1. ควรสร้าง Service ใหม่ (Chat Service) หรือเพิ่มใน Task Service? <br>
 **ตอบ** ควรสร้าง Service ใหม่ เพราะ Chat มีการใช้งานที่ต่างจาก Task การแยกออกมาจะช่วยให้ Scale เฉพาะส่วนได้ง่ายขึ้น 
-2. ถ้าสร้าง Service ใหม่ → Technology Stack อะไร? เพราะอะไร?
+2. ถ้าสร้าง Service ใหม่ → Technology Stack อะไร? เพราะอะไร? <br>
 **ตอบ** Node.js (Express) เพราะรองรับ I/O แบบ Non-blocking ได้ดีเยี่ยม และทำงานร่วมกับ Socket.io ได้อย่างมีประสิทธิภาพ
 3. Database ควรใช้อะไร? (SQL/NoSQL/Cache) เพราะอะไร?
 **ตอบ** MongoDB (NoSQL) เพราะ Chat History มีโครงสร้างข้อมูลที่ไม่ซับซ้อนและรองรับการบันทึกข้อมูลปริมาณมาก
-4. Real-time ใช้ WebSocket หรือ Polling? Trade-offs?
+4. Real-time ใช้ WebSocket หรือ Polling? Trade-offs? <br>
 **ตอบ** ใช้ WebSocket เพราะเป็นการสื่อสารแบบ Full-duplex ที่ลด Overhead ของ HTTP Header ทำให้รับส่งข้อความได้ทันที
 
 ### 2. Architecture Diagram (30 คะแนน)
