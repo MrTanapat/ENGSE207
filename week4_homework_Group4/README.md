@@ -49,12 +49,11 @@
 - message_received: Broadcast ข้อความไปยังทุกคนใน boardId
 
 ### 5. Challenges & Solutions (10 คะแนน)
-✅ วิเคราะห์:
-• Challenge 1: Message Order (ลำดับข้อความ)
+- Challenge 1: Message Order (ลำดับข้อความ) <br>
 **Solution :** ใช้ Snowflake ID หรือ Timestamp ระดับนาโนวินาที จากฝั่ง Server เพื่อเรียงลำดับเวลาที่แน่นอน 
-• Challenge 2: Message Delivery Guarantee
+- Challenge 2: Message Delivery Guarantee <br>
 **Solution :** ใช้ Message Ack จาก Client เมื่อได้รับข้อความ หากไม่ได้รับในเวลาที่กำหนด Server จะทำการ Retry
-• Challenge 3: Scalability (เมื่อมีผู้ใช้หลายพัน)
+- Challenge 3: Scalability (เมื่อมีผู้ใช้หลายพัน) <br>
 **Solution :** ใช้ Redis Pub/Sub เพื่อแชร์ข้อความระหว่าง Chat Service หลายๆ Instance (Horizontal Scaling)
-• Challenge 4: Chat History (เก็บอย่างไร? เก็บนานแค่ไหน?)
+- Challenge 4: Chat History (เก็บอย่างไร? เก็บนานแค่ไหน?) <br>
 **Solution :** ใช้ Database Indexing บน boardId และ timestamp พร้อมทำ Data Archiving โดยย้ายข้อความที่เก่ากว่า 1 ปีไปยัง Cold Storage
