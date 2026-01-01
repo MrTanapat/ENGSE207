@@ -21,7 +21,7 @@
 ### 2. Architecture Diagram (30 คะแนน)
 
 <p align="center">
-  <img src="week4_homework_Group4/Architecture_Diagram.drawio.png" width="80%" alt="Architecture Diagram">
+  <img src="week4_homework_Group4/Architecture_Diagram.png" width="80%" alt="Architecture Diagram">
   <br>
   <b>รูปที่ 1: แผนภาพสถาปัตยกรรมระบบ Team Chat</b>
 </p>
