@@ -4,13 +4,21 @@ const database = require('./database/connection');
 const taskController = require('./src/controllers/taskController');
 const errorHandler = require('./src/middleware/errorHandler');
 const logger = require('./src/utils/logger');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const corsOptions = {
+	origin: true,
+	credentials: true,
+	optionsSuccessStatus: 200
+};
+
 // Middleware
 app.use(express.json());
 app.use(express.static('public'));
+app.use(cors(corsOptions));
 
 // Logging middleware
 app.use((req, res, next) => {

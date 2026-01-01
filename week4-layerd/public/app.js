@@ -2,6 +2,10 @@
 // Task Board - Frontend Logic (Custom CSS Version)
 
 const API_BASE_URL = 'http://192.168.1.11:3000';
+const API = {
+	TASKS:`${API_BASE}${API_CONFIG.ENDPOINTS.TASKS}`,
+	STATS:`${API_BASE}${API_CONFIG.ENGPOINTS.STATS}`
+}
 // ========================================
 // PART 1: STATE MANAGEMENT
 // ========================================
@@ -36,11 +40,11 @@ const doneCount = document.getElementById('doneCount');
 async function fetchTasks() {
     showLoading();
     try {
-        const response = await fetch('/api/tasks');
+        const response = await fetch(API.TASKS);
         if (!response.ok) throw new Error('Failed to fetch');
         
-        const data = await response.json();
-        allTasks = data.tasks; 
+        const { data } = await response.json();
+        allTasks = data.tasks || data; 
         renderTasks(); 
     } catch (error) {
         console.error('Error fetching tasks:', error);
@@ -58,7 +62,7 @@ async function fetchTasks() {
 async function createTask(taskData) {
     showLoading();
     try {
-        const response = await fetch('/api/tasks', {
+        const response = await fetch(API.TASKS, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
