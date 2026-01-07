@@ -41,7 +41,9 @@ README นี้อธิบายแนวคิดด้าน System Design �
 
 ### Diagram (Conceptual)
 
-<img width="822" height="749" alt="image" src="https://github.com/user-attachments/assets/2eeafe83-9ec5-49db-8105-0044bb8dff44" />
+<img width="1080" height="800" src="https://github.com/user-attachments/assets/dec4cf77-7cc8-4290-9b59-2d4a14b00d93"/>
+
+
 
 ---
 
