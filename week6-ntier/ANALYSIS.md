@@ -62,7 +62,7 @@
 
 ### ตารางคะแนน (1-5 คะแนน)
 
-| Quality Attribute | Week 3 | Week 4 | Week 5 | Week 6 | หมายเหตุ |1 
+| Quality Attribute | Week 3 | Week 4 | Week 5 | Week 6 | หมายเหตุ | 
 |-------------------|--------|--------|--------|--------|----------|
 | **Performance** | 5 | 5 | 4 | 4 | Week 6 มี Network Hop เพิ่มขึ้น |
 | **Scalability** | 1 | 1 | 3 | 5 | N-Tier แยก Tier ให้ขยายง่าย |
@@ -416,6 +416,7 @@ Trigger/เงื่อนไข:
 ### Screenshot 5: Create/Edit Task
 - **Before**
 <img width="515" height="425" alt="image" src="https://github.com/user-attachments/assets/30348f7b-fe7a-4f4f-8261-e818b593ac98" />
+
 - **After**
 <img width="1400" height="800" alt="image" src="https://github.com/user-attachments/assets/b11440b7-5253-465b-a2fc-a2123bff278a" />
 
