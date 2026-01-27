@@ -1,0 +1,309 @@
+### 📝 แบบฝึกหัดที่ 1: จัดการ Images
+
+**1.1 ดาวน์โหลด (Pull) Images**
+
+```bash
+# Pull Node.js image (ARM64 native)
+docker pull node:20-alpine
+
+# Pull Nginx image
+docker pull nginx:alpine
+
+# Pull PostgreSQL image
+docker pull postgres:16-alpine
+```
+
+**สังเกต:** Docker จะดาวน์โหลด ARM64 version โดยอัตโนมัติ
+
+**1.2 ดู Images ที่มี**
+
+```bash
+docker images
+```
+
+**ผลลัพธ์ที่คาดหวัง:**
+
+```
+REPOSITORY    TAG         IMAGE ID       CREATED        SIZE
+node          20-alpine   abc123def456   2 days ago     135MB
+nginx         alpine      def456abc789   1 week ago     43MB
+postgres      16-alpine   789abc123def   3 days ago     238MB
+hello-world   latest      d2c94e258dcb   8 months ago   13.3kB
+```
+
+**📌 สังเกต:** SIZE ของ alpine images มีขนาดเล็ก
+
+---
+
+### 📝 แบบฝึกหัดที่ 2: รัน Containers
+
+**2.1 รัน Node.js Container**
+
+```bash
+# รัน Node.js และดู version
+docker run node:20-alpine node --version
+```
+
+**ผลลัพธ์:**
+
+```
+v20.18.0
+```
+
+**2.2 รัน Container แบบ Interactive**
+
+```bash
+# เข้าไปใน Container
+docker run -it node:20-alpine /bin/sh
+```
+
+**ตอนนี้คุณอยู่ "ข้างใน" Container แล้ว!**
+
+```sh
+# ลองพิมพ์คำสั่งใน Container
+/ # node --version
+v20.18.0
+
+/ # npm --version
+10.8.2
+
+/ # uname -m
+aarch64        # ← ARM64 architecture
+
+/ # cat /etc/os-release
+NAME="Alpine Linux"
+...
+
+/ # exit
+```
+
+**2.3 รัน Nginx Web Server**
+
+```bash
+# รัน Nginx ใน background
+docker run -d -p 8080:80 --name my-nginx nginx:alpine
+```
+
+**เปิด Browser ไปที่:** http://localhost:8080
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                 │
+│                Welcome to nginx!                                │
+│                                                                 │
+│  If you see this page, the nginx web server is successfully     │
+│  installed and working.                                         │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+🎉 **คุณเพิ่งรัน Web Server โดยไม่ต้องติดตั้งอะไรเลย!**
+
+---
+
+### 📝 แบบฝึกหัดที่ 3: จัดการ Containers
+
+**3.1 ดู Containers ที่กำลังรัน**
+
+```bash
+docker ps
+```
+
+**ผลลัพธ์:**
+
+```
+CONTAINER ID   IMAGE          COMMAND                  STATUS         PORTS                  NAMES
+abc123def456   nginx:alpine   "/docker-entrypoint.…"   Up 5 minutes   0.0.0.0:8080->80/tcp   my-nginx
+```
+
+**3.2 ดู Logs ของ Container**
+
+```bash
+docker logs my-nginx
+```
+
+**3.3 ดูใน Docker Desktop**
+
+เปิด Docker Desktop → Click ที่ **"Containers"** tab
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  Docker Desktop > Containers                                    │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  NAME        IMAGE          STATUS      PORT(S)        ACTIONS  │
+│  my-nginx    nginx:alpine   Running     8080:80        ⏹️ 🗑️    │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**3.4 หยุด Container**
+
+```bash
+docker stop my-nginx
+```
+
+**3.5 เริ่ม Container อีกครั้ง**
+
+```bash
+docker start my-nginx
+```
+
+**3.6 ลบ Container**
+
+```bash
+# หยุดก่อน
+docker stop my-nginx
+
+# ลบ
+docker rm my-nginx
+```
+
+---
+
+### 📝 แบบฝึกหัดที่ 4: รัน PostgreSQL Database
+
+**4.1 รัน PostgreSQL Container**
+
+```bash
+docker run -d \
+  --name my-postgres \
+  -e POSTGRES_USER=student \
+  -e POSTGRES_PASSWORD=secret123 \
+  -e POSTGRES_DB=testdb \
+  -p 5432:5432 \
+  postgres:16-alpine
+```
+
+**4.2 เชื่อมต่อเข้าไปใน Database**
+
+```bash
+docker exec -it my-postgres psql -U student -d testdb
+```
+
+**ตอนนี้คุณอยู่ใน PostgreSQL แล้ว!**
+
+```sql
+-- สร้าง table
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+-- เพิ่มข้อมูล
+INSERT INTO students (name, email) VALUES ('สมชาย', 'somchai@example.com');
+INSERT INTO students (name, email) VALUES ('สมหญิง', 'somying@example.com');
+
+-- ดูข้อมูล
+SELECT * FROM students;
+
+-- ออกจาก psql
+\q
+```
+
+**ผลลัพธ์:**
+
+```
+ id |   name   |        email
+----+----------+---------------------
+  1 | สมชาย    | somchai@example.com
+  2 | สมหญิง   | somying@example.com
+```
+
+🎉 **คุณเพิ่งรัน Database Server โดยไม่ต้องติดตั้ง PostgreSQL!**
+
+---
+
+### 📝 แบบฝึกหัดที่ 5: ทดสอบ Multi-Platform Image
+
+**5.1 ตรวจสอบว่า Image รองรับ ARM64 หรือไม่**
+
+```bash
+docker manifest inspect node:20-alpine | grep architecture
+```
+
+**ผลลัพธ์:**
+
+```
+"architecture": "amd64",
+"architecture": "arm64",
+...
+```
+
+**ถ้าเห็น `arm64` แสดงว่ารองรับ Apple Silicon native**
+
+**5.2 บังคับใช้ Platform เฉพาะ (สำหรับทดสอบ)**
+
+```bash
+# รัน ARM64 image (native - เร็ว)
+docker run --platform linux/arm64 node:20-alpine node --version
+
+# รัน AMD64 image (ผ่าน Rosetta - ช้ากว่า)
+docker run --platform linux/amd64 node:20-alpine node --version
+```
+
+**📌 หมายเหตุ:** ปกติไม่ต้องระบุ `--platform` Docker จะเลือกให้อัตโนมัติ
+
+---
+
+### 📝 แบบฝึกหัดที่ 6: ทำความสะอาด
+
+**6.1 หยุดและลบ Containers ทั้งหมด**
+
+```bash
+# หยุดทุก Container
+docker stop $(docker ps -q)
+
+# ลบทุก Container
+docker rm $(docker ps -aq)
+```
+
+**6.2 ลบ Images ที่ไม่ใช้**
+
+```bash
+docker image prune -a
+```
+
+**6.3 ทำความสะอาดทั้งระบบ**
+
+```bash
+docker system prune -a
+```
+
+**หรือใช้ Docker Desktop:**
+
+1. Click 🐳 icon ใน Menu Bar
+2. เลือก **"Troubleshoot"** (🔧)
+3. Click **"Clean / Purge data"**
+
+---
+
+## 10. Checklist ก่อนมาเรียน
+
+### ✅ ตรวจสอบว่าทำครบทุกข้อ
+
+| #   | รายการ                            | สถานะ |
+| --- | --------------------------------- | ----- |
+| 1   | Mac เป็น Apple Silicon (M1/M2/M3) | ☐     |
+| 2   | macOS 13.0+ (Ventura/Sonoma)      | ☐     |
+| 3   | Rosetta 2 ติดตั้งแล้ว             | ☐     |
+| 4   | Docker Desktop ติดตั้งสำเร็จ      | ☐     |
+| 5   | Docker Engine รันได้ (icon เขียว) | ☐     |
+| 6   | `docker --version` ทำงานได้       | ☐     |
+| 7   | `docker run hello-world` สำเร็จ   | ☐     |
+| 8   | สมัคร Docker Hub แล้ว             | ☐     |
+| 9   | `docker login` สำเร็จ             | ☐     |
+| 10  | ทำแบบฝึกหัดครบทุกข้อ              | ☐     |
+
+### 📸 Screenshot ที่ต้องเตรียม
+
+เตรียม Screenshot เหล่านี้เพื่อยืนยันการติดตั้ง:
+
+1. **About This Mac** - แสดง Chip เป็น Apple M1/M2/M3
+2. **Docker Desktop** - หน้าจอ Dashboard แสดงว่า Engine Running
+3. **Terminal** - ผลลัพธ์ของ `docker --version`
+4. **Terminal** - ผลลัพธ์ของ `docker run hello-world`
+5. **Terminal** - ผลลัพธ์ของ `docker images` (หลังจาก pull images)
+
+---
