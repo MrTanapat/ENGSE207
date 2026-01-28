@@ -320,16 +320,16 @@ docker system prune -a
 
 | #   | รายการ                            | สถานะ |
 | --- | --------------------------------- | ----- |
-| 1   | Mac เป็น Apple Silicon (M1/M2/M3) | ☐     |
-| 2   | macOS 13.0+ (Ventura/Sonoma)      | ☐     |
-| 3   | Rosetta 2 ติดตั้งแล้ว             | ☐     |
-| 4   | Docker Desktop ติดตั้งสำเร็จ      | ☐     |
-| 5   | Docker Engine รันได้ (icon เขียว) | ☐     |
-| 6   | `docker --version` ทำงานได้       | ☐     |
-| 7   | `docker run hello-world` สำเร็จ   | ☐     |
-| 8   | สมัคร Docker Hub แล้ว             | ☐     |
-| 9   | `docker login` สำเร็จ             | ☐     |
-| 10  | ทำแบบฝึกหัดครบทุกข้อ              | ☐     |
+| 1   | Mac เป็น Apple Silicon (M1/M2/M3) | ✅     |
+| 2   | macOS 13.0+ (Ventura/Sonoma)      | ✅     |
+| 3   | Rosetta 2 ติดตั้งแล้ว             | ✅     |
+| 4   | Docker Desktop ติดตั้งสำเร็จ      | ✅     |
+| 5   | Docker Engine รันได้ (icon เขียว) | ✅     |
+| 6   | `docker --version` ทำงานได้       | ✅     |
+| 7   | `docker run hello-world` สำเร็จ   | ✅     |
+| 8   | สมัคร Docker Hub แล้ว             | ✅     |
+| 9   | `docker login` สำเร็จ             | ✅     |
+| 10  | ทำแบบฝึกหัดครบทุกข้อ              | ✅     |
 
 ### 📸 Screenshot ที่ต้องเตรียม
 
