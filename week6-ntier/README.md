@@ -15,11 +15,37 @@ https://taskboard.local
 
 ```bash
 week6-ntier/
-├── src/           # Backend source code
-├── public/        # Frontend files
-├── database/      # SQL scripts
-├── nginx/         # Nginx config
-└── scripts/       # Helper scripts
+## 📂 Project Structure
+
+```text
+week6-ntier/
+├── database/              # Data Tier: SQL scripts & Database initialization
+│   └── init.sql           # PostgreSQL schema and sample data
+├── docs/                  # Project documentation & Analysis
+├── multi_vm/              # Infrastructure: Multi-VM configuration
+│   └── Vagrantfile        # Automation script for creating 3 VMs (Web, App, DB)
+├── nginx/                 # Web Tier: Nginx Reverse Proxy & SSL configuration
+│   └── taskboard.conf     # Nginx server block for HTTPS and Proxy
+├── public/                # Presentation Tier: Frontend static files
+│   ├── css/               # Stylesheets
+│   ├── js/                # Client-side JavaScript (app.js)
+│   └── index.html         # Main entry point for frontend
+├── scripts/               # Automation & Testing scripts
+│   ├── start-all.sh       # Script to boot up the system
+│   └── test-api.sh        # API testing suite
+├── src/                   # Logic Tier: Backend source code (Layered Architecture)
+│   ├── config/            # Database connection pool setup
+│   ├── controllers/       # Route handlers & Request parsing
+│   ├── middleware/        # Custom middlewares (Error handling, Validation)
+│   ├── models/            # Data models & Schema definitions
+│   ├── repositories/      # Data Access Layer (PostgreSQL queries)
+│   ├── routes/            # API Route definitions
+│   └── services/          # Business Logic Layer
+├── .env                   # Environment variables (DB credentials, Ports)
+├── ANALYSIS.md            # Architecture analysis and comparison report
+├── MULTI_VM_SETUP.md      # Documentation for Multi-VM environment setup
+├── package.json           # Node.js dependencies and scripts
+└── server.js              # Application entry point
 ```
 
 ## 🛠️ Technologies
