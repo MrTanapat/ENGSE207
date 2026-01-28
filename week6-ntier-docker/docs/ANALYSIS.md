@@ -25,8 +25,8 @@
 
 | Resource | Version 1 (VM) | Version 2 (Docker) |
 |----------|----------------|-------------------|
-| Memory Usage | [ใช้ `free -h`] | [ใช้ `docker stats`] |
-| Disk Usage | [ใช้ `df -h`] | [ใช้ `docker system df`] |
+| Memory Usage | 600 - 800 MB | 100 - 150 MB |
+| Disk Usage | 10 - 20 GB | 600 - 800 MB|
 | CPU Usage | ปานกลาง | ต่ำมาก |
 | Startup Time | 45-90 วินาที | 2-10 วินาที |
 
