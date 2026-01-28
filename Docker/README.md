@@ -2,24 +2,22 @@
 
 **1.1 ดาวน์โหลด (Pull) Images**
 
-```bash
-# Pull Node.js image (ARM64 native)
-docker pull node:20-alpine
+- `docker pull node:20-alpine`
+<img width="730" height="100" alt="image" src="https://github.com/user-attachments/assets/4b1112fb-3296-4b2c-841f-3b87811e0b40" />
 
-# Pull Nginx image
-docker pull nginx:alpine
+- `docker pull nginx:alpine`
+<img width="730" height="300" alt="image" src="https://github.com/user-attachments/assets/ca94711b-2a8f-43b5-927f-dfeb7d170cb7" />
 
-# Pull PostgreSQL image
-docker pull postgres:16-alpine
-```
+- `docker pull postgres:16-alpine`
+<img width="730" height="300" alt="image" src="https://github.com/user-attachments/assets/3bc6e666-7534-49c3-984d-3a7a68ea58c1" />
 
 **สังเกต:** Docker จะดาวน์โหลด ARM64 version โดยอัตโนมัติ
 
 **1.2 ดู Images ที่มี**
 
-```bash
-docker images
-```
+- `docker images`
+<img width="730" height="100" alt="image" src="https://github.com/user-attachments/assets/09e4a8db-d08f-4181-9558-f66a2505cf36" />
+
 
 **ผลลัพธ์ที่คาดหวัง:**
 
@@ -50,6 +48,9 @@ docker run node:20-alpine node --version
 v20.18.0
 ```
 
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/c23ac106-1c31-411d-ab16-765fec3fde1d" />
+
+
 **2.2 รัน Container แบบ Interactive**
 
 ```bash
@@ -76,6 +77,7 @@ NAME="Alpine Linux"
 
 / # exit
 ```
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/8c254cd9-45ce-46d0-9bdc-7cc57b6e4fab" />
 
 **2.3 รัน Nginx Web Server**
 
@@ -97,6 +99,9 @@ docker run -d -p 8080:80 --name my-nginx nginx:alpine
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/306e81f3-92b7-45b8-929f-4ff129d75f97" />
+
+
 🎉 **คุณเพิ่งรัน Web Server โดยไม่ต้องติดตั้งอะไรเลย!**
 
 ---
@@ -111,6 +116,9 @@ docker ps
 
 **ผลลัพธ์:**
 
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/9b4634af-67f6-4fba-b147-bdfdb09a1022" />
+
+
 ```
 CONTAINER ID   IMAGE          COMMAND                  STATUS         PORTS                  NAMES
 abc123def456   nginx:alpine   "/docker-entrypoint.…"   Up 5 minutes   0.0.0.0:8080->80/tcp   my-nginx
@@ -121,6 +129,9 @@ abc123def456   nginx:alpine   "/docker-entrypoint.…"   Up 5 minutes   0.0.0.0:
 ```bash
 docker logs my-nginx
 ```
+
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/8e4b5789-9503-4d29-960f-aa6f1ac11a9b" />
+
 
 **3.3 ดูใน Docker Desktop**
 
@@ -143,11 +154,20 @@ docker logs my-nginx
 docker stop my-nginx
 ```
 
+- **Before**
+<img width="700" height="460" alt="image" src="https://github.com/user-attachments/assets/aeb77ae9-65ff-4eef-946c-c79e9bbe9cec" />
+
+- **After**
+<img width="700" height="460" alt="image" src="https://github.com/user-attachments/assets/df0ba69f-b9b2-490e-bc78-de2cc4c9c2ef" />
+
+
+
 **3.5 เริ่ม Container อีกครั้ง**
 
 ```bash
 docker start my-nginx
 ```
+<img width="700" height="460" alt="image" src="https://github.com/user-attachments/assets/aeb77ae9-65ff-4eef-946c-c79e9bbe9cec" />
 
 **3.6 ลบ Container**
 
@@ -174,6 +194,9 @@ docker run -d \
   -p 5432:5432 \
   postgres:16-alpine
 ```
+
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/43cc6c27-ebbc-4e9b-a76f-ab6488b7296e" />
+
 
 **4.2 เชื่อมต่อเข้าไปใน Database**
 
@@ -204,6 +227,9 @@ SELECT * FROM students;
 
 **ผลลัพธ์:**
 
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/b8c31ac1-5d9a-4027-bc5e-f2fa6c56eb5c" />
+
+
 ```
  id |   name   |        email
 ----+----------+---------------------
@@ -233,6 +259,9 @@ docker manifest inspect node:20-alpine | grep architecture
 
 **ถ้าเห็น `arm64` แสดงว่ารองรับ Apple Silicon native**
 
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/4127a37d-a2f4-4416-808f-8099ee29477f" />
+
+
 **5.2 บังคับใช้ Platform เฉพาะ (สำหรับทดสอบ)**
 
 ```bash
@@ -242,6 +271,10 @@ docker run --platform linux/arm64 node:20-alpine node --version
 # รัน AMD64 image (ผ่าน Rosetta - ช้ากว่า)
 docker run --platform linux/amd64 node:20-alpine node --version
 ```
+
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/d7f7b969-36f4-4bfc-8e19-ee531df543f9" />
+
+
 
 **📌 หมายเหตุ:** ปกติไม่ต้องระบุ `--platform` Docker จะเลือกให้อัตโนมัติ
 
@@ -258,6 +291,7 @@ docker stop $(docker ps -q)
 # ลบทุก Container
 docker rm $(docker ps -aq)
 ```
+<img width="700" height="300" alt="image" src="https://github.com/user-attachments/assets/6ae71045-cc02-4284-959c-f21bb225cd4c" />
 
 **6.2 ลบ Images ที่ไม่ใช้**
 
@@ -270,6 +304,7 @@ docker image prune -a
 ```bash
 docker system prune -a
 ```
+<img width="700" height="580" alt="image" src="https://github.com/user-attachments/assets/213a1e03-5f73-4562-954f-10c800fd806a" />
 
 **หรือใช้ Docker Desktop:**
 
