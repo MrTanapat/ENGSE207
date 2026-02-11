@@ -11,9 +11,9 @@
 
 | ขั้นตอน | Version 1 (VM) | Version 2 (Docker) |
 |---------|----------------|-------------------|
-| ติดตั้ง PostgreSQL | [อธิบาย] | [อธิบาย] |
-| ติดตั้ง Node.js | [อธิบาย] | [อธิบาย] |
-| ติดตั้ง Nginx | [อธิบาย] | [อธิบาย] |
+| ติดตั้ง PostgreSQL | `apt install postgresql` | `postgres:16-alpine` image |
+| ติดตั้ง Node.js | `nvm install 20` + PM2 | `node:20-alpine` + Dockerfile |
+| ติดตั้ง Nginx | `apt install nginx` | `nginx:alpine` image |
 | Configure Database | [อธิบาย] | [อธิบาย] |
 | Configure SSL | [อธิบาย] | [อธิบาย] |
 | Start Services | [อธิบาย] | [อธิบาย] |
