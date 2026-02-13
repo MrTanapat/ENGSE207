@@ -3,7 +3,7 @@
 // ENGSE207 - Week 6 Docker Version
 // ============================================
 
-const API_BASE = '/api';
+const API_BASE = CONFIG.API_URL;
 
 // ============================================
 // API Functions
