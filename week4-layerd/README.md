@@ -96,6 +96,26 @@ npm start
 ❌ **Performance** - มี overhead จาก layers  
 ❌ **Over-engineering** - อาจมากเกินไปสำหรับโปรเจกต์เล็ก
 
+Checklist การทดสอบ
+
+**การทดสอบฟังก์ชัน:**
+- [x] ✅ GET /api/tasks - คืนค่า tasks ทั้งหมด
+- [x] ✅ GET /api/tasks/:id - คืนค่า task ตัวเดียว
+- [x] ✅ GET /api/tasks?status=TODO - กรองตาม status
+- [x] ✅ GET /api/tasks/stats - คืนค่าสถิติ
+- [x] ✅ POST /api/tasks - สร้าง task ที่ถูกต้อง
+- [x] ✅ POST /api/tasks - ปฏิเสธ task ที่ title < 3 ตัวอักษร
+- [x] ✅ POST /api/tasks - ปฏิเสธ HIGH priority ที่ไม่มี description
+- [x] ✅ PUT /api/tasks/:id - อัพเดท task
+- [x] ✅ PUT /api/tasks/:id - ปฏิเสธการเปลี่ยนจาก DONE เป็น TODO
+- [x] ✅ PATCH /api/tasks/:id/next-status - เลื่อนสถานะไปข้างหน้า
+- [x] ✅ DELETE /api/tasks/:id - ลบ task
+
+**การทดสอบการแยก Layer:**
+- [x] ✅ Controller ไม่มี business logic
+- [x] ✅ Service ไม่มี database queries
+- [x] ✅ Repository ไม่มี business rules
+
 ## เทคโนโลยีที่ใช้
 
 - Node.js 20+
