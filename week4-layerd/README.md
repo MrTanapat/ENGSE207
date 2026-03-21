@@ -117,25 +117,25 @@ Checklist การทดสอบ
    - **เหตุผล:** เป็น Business Validation — กฎที่ว่า "title ต้องมีอย่างน้อย 3 ตัวอักษร" คือกฎทางธุรกิจ ไม่ใช่แค่การตรวจรูปแบบ HTTP input
 
 3. `res.status(201).json({ success: true, data: task })`
-   - [ ] Controller
-   - [ ] Service
-   - [ ] Repository
-   - **คำตอบ:** ________________
-   - **เหตุผล:** ________________
-
-4. `if (priority === 'HIGH' && !description) throw new Error(...)`
    - [x] Controller
    - [ ] Service
    - [ ] Repository
    - **คำตอบ:** Controller
    - **เหตุผล:** ใช้ res ซึ่งเป็น HTTP Response object — Controller เป็นชั้นเดียวที่รู้จัก HTTP, req, res ชั้นอื่นไม่ควรสัมผัส HTTP เลย
 
-5. `const taskData = { title: req.body.title, description: req.body.description }`
+4. `if (priority === 'HIGH' && !description) throw new Error(...)`
    - [ ] Controller
-   - [x] Service
-   - [ ] Repository
-   - **คำตอบ:** Service
+   - [ ] Service
+   - [x] Repository
+   - **คำตอบ:** 
    - **เหตุผล:** เป็น Business Rule ที่ซับซ้อน — กฎที่ว่า "งาน HIGH priority ต้องมี description" คือนโยบายทางธุรกิจ ไม่ใช่แค่ format validation
+
+5. `const taskData = { title: req.body.title, description: req.body.description }`
+   - [x] Controller
+   - [ ] Service
+   - [ ] Repository
+   - **คำตอบ:** Controller
+   - **เหตุผล:** ดึงข้อมูลออกจาก req.body ซึ่งเป็น HTTP Request object — Controller มีหน้าที่ extract และ format ข้อมูลจาก HTTP request ก่อนส่งต่อให้ Service
 
 ---
 
