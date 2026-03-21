@@ -98,6 +98,47 @@ npm start
 
 Checklist การทดสอบ
 
+### 🎯 แบบฝึกหัด 1: Layer Decision Tree (10 นาที)
+
+**คำถาม:** โค้ดต่อไปนี้ควรอยู่ใน Layer ไหน? เพราะอะไร?
+
+1. `const tasks = await database.all('SELECT * FROM tasks')`
+   - [ ] Controller
+   - [ ] Service  
+   - [x] Repository
+   - **คำตอบ:** Repository
+   - **เหตุผล:** เป็น SQL query ที่ติดต่อกับฐานข้อมูลโดยตรง หน้าที่ของ Repository คือจัดการ CRUD operations ทั้งหมด Controller และ Service ไม่ควรรู้จัก SQL เลย
+
+2. `if (title.length < 3) throw new Error('Title too short')`
+   - [ ] Controller
+   - [x] Service
+   - [ ] Repository
+   - **คำตอบ:** Service
+   - **เหตุผล:** เป็น Business Validation — กฎที่ว่า "title ต้องมีอย่างน้อย 3 ตัวอักษร" คือกฎทางธุรกิจ ไม่ใช่แค่การตรวจรูปแบบ HTTP input
+
+3. `res.status(201).json({ success: true, data: task })`
+   - [ ] Controller
+   - [ ] Service
+   - [ ] Repository
+   - **คำตอบ:** ________________
+   - **เหตุผล:** ________________
+
+4. `if (priority === 'HIGH' && !description) throw new Error(...)`
+   - [x] Controller
+   - [ ] Service
+   - [ ] Repository
+   - **คำตอบ:** Controller
+   - **เหตุผล:** ใช้ res ซึ่งเป็น HTTP Response object — Controller เป็นชั้นเดียวที่รู้จัก HTTP, req, res ชั้นอื่นไม่ควรสัมผัส HTTP เลย
+
+5. `const taskData = { title: req.body.title, description: req.body.description }`
+   - [ ] Controller
+   - [x] Service
+   - [ ] Repository
+   - **คำตอบ:** Service
+   - **เหตุผล:** เป็น Business Rule ที่ซับซ้อน — กฎที่ว่า "งาน HIGH priority ต้องมี description" คือนโยบายทางธุรกิจ ไม่ใช่แค่ format validation
+
+---
+
 **การทดสอบฟังก์ชัน:**
 - [x] ✅ GET /api/tasks - คืนค่า tasks ทั้งหมด
 - [x] ✅ GET /api/tasks/:id - คืนค่า task ตัวเดียว
