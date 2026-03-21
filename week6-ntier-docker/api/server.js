@@ -21,13 +21,13 @@ const PORT = process.env.PORT || 3000;
 // ============================================
 
 // CORS - อนุญาต requests จาก Nginx
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN || "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  }),
-);
+// app.use(
+//   cors({
+//     origin: process.env.CORS_ORIGIN || "*",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//   }),
+// );
 
 // CORS configuration - รองรับทั้ง Local และ Railway
 const corsOptions = {
