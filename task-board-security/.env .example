@@ -1,0 +1,28 @@
+# ─── JWT Config ───
+JWT_SECRET=
+JWT_EXPIRES=1h
+
+# ─── Auth DB ───
+AUTH_DB_HOST=auth-db
+AUTH_DB_NAME=auth_db
+AUTH_DB_USER=auth_user
+AUTH_DB_PASSWORD=auth_db_password_2024
+
+# ─── Task DB ───
+TASK_DB_HOST=task-db
+TASK_DB_NAME=task_db
+TASK_DB_USER=task_user
+TASK_DB_PASSWORD=task_db_password_2024
+
+# ─── User DB ───
+USER_DB_HOST=user-db
+USER_DB_NAME=user_db
+USER_DB_USER=user_user
+USER_DB_PASSWORD=user_db_password_2024
+
+# ─── Ports ───
+AUTH_SERVICE_PORT=3001
+TASK_SERVICE_PORT=3002
+USER_SERVICE_PORT=3003
+GATEWAY_PORT=80
+GRAFANA_PORT=3030   # ← เปลี่ยนจาก 3000 เพื่อไม่สับสนกับ Node.js services
