@@ -1,0 +1,21 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/ubuntu2204"
+
+  # VM1: Web Tier (Nginx) - 10.0.0.10
+  config.vm.define "web" do |web|
+    web.vm.network "private_network", ip: "10.0.0.10"
+    web.vm.hostname = "web-tier"
+  end
+
+  # VM2: App Tier (Node.js) - 10.0.0.20
+  config.vm.define "app" do |app|
+    app.vm.network "private_network", ip: "10.0.0.20"
+    app.vm.hostname = "app-tier"
+  end
+
+  # VM3: Data Tier (PostgreSQL) - 10.0.0.30
+  config.vm.define "db" do |db|
+    db.vm.network "private_network", ip: "10.0.0.30"
+    db.vm.hostname = "db-tier"
+  end
+end

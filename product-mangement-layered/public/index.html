@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management System</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2563eb; margin-bottom: 30px; }
+        .api-endpoints { background: #f9fafb; padding: 20px; border-radius: 8px; }
+        .endpoint { margin: 15px 0; padding: 15px; background: white; border-left: 4px solid #2563eb; }
+        .method { display: inline-block; padding: 5px 10px; border-radius: 4px; font-weight: bold; color: white; margin-right: 10px; }
+        .get { background: #10b981; }
+        .post { background: #f59e0b; }
+        .put { background: #8b5cf6; }
+        .delete { background: #ef4444; }
+        code { background: #f3f4f6; padding: 2px 8px; border-radius: 4px; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Product Management System API</h1>
+        <p style="margin-bottom: 20px;">Layered Architecture Example - ENGSE207</p>
+        
+        <div class="api-endpoints">
+            <h2 style="margin-bottom: 15px;">📡 API Endpoints:</h2>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/api/products</code>
+                <p>ดึงสินค้าทั้งหมด (สามารถ filter ด้วย ?category=Electronics)</p>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <code>/api/products/:id</code>
+                <p>ดึงสินค้าตาม ID</p>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <code>/api/products</code>
+                <p>เพิ่มสินค้าใหม่</p>
+                <pre style="margin-top: 10px; background: #f9fafb; padding: 10px; border-radius: 4px;">
+{
+  "name": "Laptop",
+  "price": 25000,
+  "stock": 10,
+  "category": "Electronics"
+}</pre>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <code>/api/products/:id</code>
+                <p>อัพเดทสินค้า</p>
+            </div>
+            
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <code>/api/products/:id</code>
+                <p>ลบสินค้า (ต้อง stock = 0 ก่อน)</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 30px; padding: 20px; background: #fef3c7; border-radius: 8px;">
+            <h3>💡 Tips:</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>ใช้ Thunder Client, Postman หรือ curl ทดสอบ API</li>
+                <li>Categories ที่ valid: Electronics, Clothing, Food, Books, Toys</li>
+                <li>ไม่สามารถลบสินค้าที่มี stock > 0</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
